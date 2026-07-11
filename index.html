@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rocket SA: consultoría, ventas, marketing e inteligencia artificial para acelerar el crecimiento de tu empresa." />
+  <title>Rocket SA | Consultoría, Ventas, Marketing e IA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #060816;
+      --bg-soft: #0d1230;
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-strong: rgba(255, 255, 255, 0.13);
+      --text: #f7f8ff;
+      --muted: #b9c0db;
+      --primary: #7c3cff;
+      --secondary: #00d4ff;
+      --accent: #ff3d81;
+      --yellow: #ffd447;
+      --green: #28e0a0;
+      --border: rgba(255,255,255,0.13);
+      --shadow: 0 25px 80px rgba(0,0,0,.35);
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(124, 60, 255, .24), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(0, 212, 255, .18), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 61, 129, .14), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 45px 45px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: #dfe4ff;
+      font-size: .83rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--secondary), var(--green));
+      box-shadow: 0 0 18px var(--secondary);
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: .98;
+      margin-top: 18px;
+      letter-spacing: -.045em;
+    }
+
+    .section-subtitle {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-top: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--secondary), #9e7cff 45%, var(--accent));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .nav-wrap {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: .35s ease;
+    }
+
+    .nav-wrap.scrolled {
+      padding: 10px 0;
+      background: rgba(5, 8, 22, .75);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.18rem;
+      letter-spacing: -.03em;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 10px 30px rgba(124,60,255,.35);
+      transform: rotate(-8deg);
+    }
+
+    .brand-logo span {
+      transform: rotate(8deg);
+      font-size: 1.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #d8def6;
+      font-weight: 600;
+      font-size: .94rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: .25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      height: 2px;
+      width: 0;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta,
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 800;
+      border-radius: 15px;
+      transition: .28s ease;
+    }
+
+    .nav-cta {
+      padding: 13px 18px;
+      background: white;
+      color: #0c1026;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(255,255,255,.16);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--border);
+      color: white;
+      border-radius: 14px;
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 140px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7.2rem);
+      line-height: .88;
+      letter-spacing: -.065em;
+      margin: 24px 0;
+    }
+
+    .hero p {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 1.14rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .btn {
+      padding: 16px 23px;
+      font-size: .98rem;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 16px 40px rgba(124,60,255,.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 0 20px 50px rgba(124,60,255,.44);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(15px);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.12);
+    }
+
+    .hero-metrics {
+      margin-top: 46px;
+      display: flex;
+      gap: 34px;
+      flex-wrap: wrap;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.7rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: .87rem;
+    }
+
+    .orbit-stage {
+      position: relative;
+      min-height: 600px;
+      display: grid;
+      place-items: center;
+    }
+
+    .planet {
+      width: 330px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 20%, #ffffff, transparent 7%),
+        radial-gradient(circle at 30% 30%, #77eaff, transparent 20%),
+        radial-gradient(circle at 66% 70%, #ff5ea0, transparent 35%),
+        linear-gradient(145deg, #6a34ff, #151d57 60%, #080b22);
+      box-shadow:
+        inset -35px -25px 65px rgba(0,0,0,.55),
+        0 0 70px rgba(124,60,255,.35),
+        0 0 130px rgba(0,212,255,.13);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .planet::before,
+    .planet::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      filter: blur(1px);
+    }
+
+    .planet::before {
+      width: 65px;
+      height: 26px;
+      left: 55px;
+      top: 90px;
+      transform: rotate(-20deg);
+    }
+
+    .planet::after {
+      width: 90px;
+      height: 34px;
+      right: 35px;
+      bottom: 85px;
+      transform: rotate(12deg);
+    }
+
+    .orbit {
+      position: absolute;
+      width: 500px;
+      height: 165px;
+      border: 2px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      transform: rotate(-16deg);
+      box-shadow: 0 0 40px rgba(0,212,255,.1);
+    }
+
+    .rocket {
+      position: absolute;
+      font-size: 3.4rem;
+      transform-origin: 250px 0;
+      animation: orbit 8s linear infinite;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.4));
+    }
+
+    .floating-card {
+      position: absolute;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(15,20,52,.7);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: .9rem;
+    }
+
+    .floating-card span {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .card-ai { top: 90px; right: 0; animation-delay: .5s; }
+    .card-growth { bottom: 115px; left: 0; animation-delay: 1s; }
+    .card-sales { top: 240px; left: -35px; animation-delay: 1.5s; }
+
+    .glow {
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .25;
+      z-index: -1;
+    }
+
+    .glow.one { background: var(--primary); top: 10%; left: -10%; }
+    .glow.two { background: var(--secondary); right: -10%; bottom: 10%; }
+
+    .logos-strip {
+      padding: 24px 0 8px;
+    }
+
+    .strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .strip-card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.045);
+      border-radius: 18px;
+      text-align: center;
+      color: #d9def6;
+      font-weight: 800;
+      letter-spacing: .03em;
+      transition: .25s ease;
+    }
+
+    .strip-card:hover {
+      background: rgba(255,255,255,.09);
+      transform: translateY(-4px);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 55px;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 340px;
+      padding: 35px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.035));
+      backdrop-filter: blur(18px);
+      transition: .35s ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -80px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: var(--card-color);
+      filter: blur(65px);
+      opacity: .25;
+      transition: .35s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255,255,255,.28);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card:hover::before {
+      transform: scale(1.3);
+      opacity: .45;
+    }
+
+    .service-number {
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .service-icon {
+      margin: 24px 0;
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      font-size: 1.75rem;
+      background: rgba(255,255,255,.09);
+      border: 1px solid var(--border);
+    }
+
+    .service-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+    }
+
+    .service-link {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 24px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .process-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      padding: 24px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      transition: .3s ease;
+    }
+
+    .process-item:hover {
+      transform: translateX(8px);
+      background: rgba(255,255,255,.09);
+    }
+
+    .process-item .num {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .process-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .process-item p {
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      padding: 65px;
+      border-radius: 34px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(0,212,255,.35), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(255,61,129,.35), transparent 30%),
+        linear-gradient(135deg, rgba(124,60,255,.95), rgba(15,22,67,.98));
+      border: 1px solid rgba(255,255,255,.24);
+      box-shadow: 0 30px 100px rgba(58,23,150,.35);
+    }
+
+    .cta-box h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: .95;
+      letter-spacing: -.05em;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .cta-box p {
+      max-width: 650px;
+      margin: 22px auto 30px;
+      color: #e1e5ff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 60px;
+      margin-top: 50px;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-card {
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+    }
+
+    .contact-card small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .contact-card strong {
+      font-size: 1rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+      padding: 30px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 16px 17px;
+      border-radius: 14px;
+      color: white;
+      background: rgba(3,7,24,.55);
+      border: 1px solid rgba(255,255,255,.12);
+      outline: none;
+      font-family: inherit;
+      transition: .25s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(0,212,255,.08);
+    }
+
+    select option {
+      background: #10142f;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    footer {
+      padding: 45px 0;
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,.12);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .socials a {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+      font-weight: 900;
+      transition: .25s ease;
+    }
+
+    .socials a:hover {
+      transform: translateY(-5px) rotate(-4deg);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+
+    .copyright {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(250px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .process,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero p {
+        margin-inline: auto;
+      }
+
+      .hero-actions,
+      .hero-metrics {
+        justify-content: center;
+      }
+
+      .orbit-stage {
+        min-height: 520px;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 78px;
+        right: 20px;
+        left: 20px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 25px;
+        border-radius: 22px;
+        background: rgba(7,10,28,.96);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        padding: 80px 0;
+      }
+
+      .container {
+        width: min(100% - 26px, 1180px);
+      }
+
+      .hero h1 {
+        font-size: clamp(3.2rem, 18vw, 5.5rem);
+      }
+
+      .services-grid,
+      .strip,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .orbit-stage {
+        min-height: 430px;
+      }
+
+      .planet {
+        width: 240px;
+      }
+
+      .orbit {
+        width: 350px;
+        height: 120px;
+      }
+
+      .rocket {
+        transform-origin: 175px 0;
+        animation-name: orbitMobile;
+      }
+
+      .floating-card {
+        padding: 12px 14px;
+      }
+
+      .card-sales {
+        left: 0;
+      }
+
+      .cta-box {
+        padding: 45px 24px;
+      }
+
+      .service-card {
+        min-height: auto;
+      }
+
+      @keyframes orbitMobile {
+        from { transform: rotate(0deg) translateX(175px) rotate(0deg); }
+        to { transform: rotate(360deg) translateX(175px) rotate(-360deg); }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav-wrap" id="navbar">
+    <div class="container">
+      <nav>
+        <a href="#inicio" class="brand">
+          <div class="brand-logo"><span>🚀</span></div>
+          <span>Rocket SA</span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#metodo">Método</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+
+        <a href="#contacto" class="nav-cta">Hablemos →</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="glow one"></div>
+      <div class="glow two"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Estrategia para empresas que quieren crecer</span>
+          <h1>
+            Impulsamos tu negocio
+            <span class="gradient-text">más allá.</span>
+          </h1>
+          <p>
+            En Rocket SA conectamos consultoría, ventas, marketing e inteligencia artificial para transformar ideas en resultados, acelerar decisiones y crear crecimiento sostenible.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contacto" class="btn btn-primary">Solicitar una propuesta <span>↗</span></a>
+            <a href="#servicios" class="btn btn-secondary">Explorar servicios</a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong>4</strong>
+              <span>áreas de especialidad</span>
+            </div>
+            <div class="metric">
+              <strong>360°</strong>
+              <span>visión integral</span>
+            </div>
+            <div class="metric">
+              <strong>IA</strong>
+              <span>aplicada al negocio</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="orbit-stage reveal">
+          <div class="orbit"></div>
+          <div class="rocket">🚀</div>
+          <div class="planet"></div>
+
+          <div class="floating-card card-ai">
+            <strong>Inteligencia Artificial</strong>
+            <span>Automatiza y escala</span>
+          </div>
+
+          <div class="floating-card card-growth">
+            <strong>Crecimiento estratégico</strong>
+            <span>Decisiones con impacto</span>
+          </div>
+
+          <div class="floating-card card-sales">
+            <strong>Ventas + Marketing</strong>
+            <span>Más oportunidades</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="logos-strip">
+      <div class="container strip">
+        <div class="strip-card">CONSULTORÍA</div>
+        <div class="strip-card">VENTAS</div>
+        <div class="strip-card">MARKETING</div>
+        <div class="strip-card">INTELIGENCIA ARTIFICIAL</div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Nuestros servicios</span>
+          <h2 class="section-title">
+            Soluciones para <span class="gradient-text">acelerar resultados.</span>
+          </h2>
+          <p class="section-subtitle">
+            Diseñamos estrategias prácticas y personalizadas para mejorar el desempeño comercial, fortalecer la marca y aprovechar el potencial de la inteligencia artificial.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal" style="--card-color:#7c3cff;">
+            <span class="service-number">01 / CONSULTORÍA</span>
+            <div class="service-icon">🧭</div>
+            <h3>Consultoría estratégica</h3>
+            <p>
+              Analizamos tu negocio, identificamos oportunidades y convertimos los desafíos en planes de acción claros, medibles y ejecutables.
+            </p>
+            <a href="#contacto" class="service-link">Conocer más <span>→</span></a>
+          </article>
+
+          <article class="service-card reveal" style="--card-color:#00d4ff;">
+            <span class="service-number">02 / VENTAS</span>
+            <div class="service-icon">📈</div>
+            <h3>Estrategia comercial</h3>
+            <p>
+              Optimizamos procesos de venta, propuestas de valor, embudos comerciales y herramientas para convertir más oportunidades en clientes.
+            </p>
+            <a href="#contacto" class="service-link">Conocer más <span>→</span></a>
+          </article>
+
+          <article class="service-card reveal" style="--card-color:#ff3d81;">
+            <span class="service-number">03 / MARKETING</span>
+            <div class="service-icon">🎯</div>
+            <h3>Marketing de alto impacto</h3>
+            <p>
+              Creamos estrategias de posicionamiento, campañas y contenidos que conectan con tu público y construyen una marca más fuerte.
+            </p>
+            <a href="#contacto" class="service-link">Conocer más <span>→</span></a>
+          </article>
+
+          <article class="service-card reveal" style="--card-color:#28e0a0;">
+            <span class="service-number">04 / INTELIGENCIA ARTIFICIAL</span>
+            <div class="service-icon">🤖</div>
+            <h3>IA aplicada al negocio</h3>
+            <p>
+              Implementamos soluciones de automatización, análisis, productividad y atención al cliente para hacer tu operación más ágil e inteligente.
+            </p>
+            <a href="#contacto" class="service-link">Conocer más <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="container process">
+        <div class="reveal">
+          <span class="eyebrow">Cómo trabajamos</span>
+          <h2 class="section-title">
+            De la idea a la <span class="gradient-text">ejecución.</span>
+          </h2>
+          <p class="section-subtitle">
+            Un proceso simple, colaborativo y orientado a resultados para avanzar con foco y velocidad.
+          </p>
+        </div>
+
+        <div class="process-list">
+          <div class="process-item reveal">
+            <div class="num">01</div>
+            <div>
+              <h4>Diagnóstico</h4>
+              <p>Comprendemos tu negocio, tus objetivos, tus clientes y los principales retos de crecimiento.</p>
+            </div>
+          </div>
+
+          <div class="process-item reveal">
+            <div class="num">02</div>
+            <div>
+              <h4>Estrategia</h4>
+              <p>Diseñamos una hoja de ruta con prioridades, responsables, indicadores y acciones concretas.</p>
+            </div>
+          </div>
+
+          <div class="process-item reveal">
+            <div class="num">03</div>
+            <div>
+              <h4>Implementación</h4>
+              <p>Convertimos la estrategia en ejecución con herramientas, acompañamiento y seguimiento continuo.</p>
+            </div>
+          </div>
+
+          <div class="process-item reveal">
+            <div class="num">04</div>
+            <div>
+              <h4>Optimización</h4>
+              <p>Medimos resultados, detectamos mejoras y ajustamos para generar un crecimiento sostenible.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-box reveal">
+          <h2>Tu próxima gran etapa empieza con una decisión.</h2>
+          <p>
+            Conversemos sobre tus objetivos y diseñemos una solución a la medida de tu empresa.
+          </p>
+          <a href="#contacto" class="btn btn-primary">Despegar con Rocket SA 🚀</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Contacto</span>
+          <h2 class="section-title">
+            Hablemos de tu <span class="gradient-text">próximo proyecto.</span>
+          </h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <p class="section-subtitle">
+              Cuéntanos qué necesitas y un especialista de Rocket SA se pondrá en contacto contigo.
+            </p>
+
+            <div class="contact-card">
+              <small>Correo</small>
+              <strong>hola@rocketsa.com</strong>
+            </div>
+
+            <div class="contact-card">
+              <small>Teléfono</small>
+              <strong>+51 999 999 999</strong>
+            </div>
+
+            <div class="contact-card">
+              <small>Ubicación</small>
+              <strong>Lima, Perú</strong>
+            </div>
+
+            <div class="socials">
+              <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">in</a>
+              <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">ig</a>
+              <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">f</a>
+              <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok">tt</a>
+              <a href="https://wa.me/51999999999" target="_blank" aria-label="WhatsApp">wa</a>
+            </div>
+          </div>
+
+          <form class="contact-form reveal" onsubmit="sendMessage(event)">
+            <div class="field-grid">
+              <input type="text" id="name" placeholder="Nombre" required>
+              <input type="email" id="email" placeholder="Correo electrónico" required>
+            </div>
+
+            <div class="field-grid">
+              <input type="text" id="company" placeholder="Empresa">
+              <select id="service" required>
+                <option value="">Servicio de interés</option>
+                <option>Consultoría estratégica</option>
+                <option>Estrategia comercial</option>
+                <option>Marketing</option>
+                <option>Inteligencia Artificial</option>
+              </select>
+            </div>
+
+            <textarea id="message" placeholder="Cuéntanos brevemente sobre tu proyecto" required></textarea>
+            <button class="btn btn-primary" type="submit">Enviar mensaje →</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <a href="#inicio" class="brand">
+        <div class="brand-logo"><span>🚀</span></div>
+        <span>Rocket SA</span>
+      </a>
+
+      <p class="copyright">
+        © <span id="year"></span> Rocket SA. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function sendMessage(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value;
+
+      const whatsappNumber = '51999999999';
+      const text = encodeURIComponent(
+        `Hola Rocket SA, soy ${name}. Me interesa el servicio de ${service}. ${message}`
+      );
+
+      window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>
